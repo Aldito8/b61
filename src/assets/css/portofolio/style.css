@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.bg-silver {
+  background-color: #d9dee4;
+}
+.text-description {
+  padding: 0;
+  margin: 20px 0 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.icon-group {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}

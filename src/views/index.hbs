@@ -1,0 +1,119 @@
+{{!-- <html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+
+<body>
+    <div>
+        <p>This Homepage</p>
+        <a href="/contact ">click here</a>
+
+        {{#each accounts}}
+        <p>
+            {{this.id}} - {{this.name}} -
+            <a href="/portofolio/{{this.id}} ">click here</a>
+        </p>
+        {{/each}}
+        
+        {{! for (let i=0; i<data.length; i++){ data[i].id data[i].title } }}
+    </div>
+    <script src="../assets/js/index.js"></script>
+</body>
+
+</html> --}}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/home/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Hari ke-2</title>
+  </head>
+  <body>
+    <header class="navigation">
+      <nav class="navigation-left">
+        <i class="fa-solid fa-web-awesome"></i>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a class="my-project" href="/portofolio">My Project</a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="navigation-right">
+        <ul>
+          <li><a href="/contact">contact me</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="wrapper-1">
+        <section class="wrapper-2">
+          <h2>Hi Wellcome to my hut</h2>
+
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac
+            quam nisi. Vivamus a quam malesuada, tristique nunc et, porta metus.
+            Donec lectus risus, ultrices et augue ultricies, vehicula lacinia
+            urna. Integer aliquet urna vel eros pharetra, sed mattis tellus
+            semper. Curabitur feugiat ante sed dapibus luctus. Etiam eleifend
+            mollis massa, in lacinia magna scelerisque sed. Aliquam nibh sapien,
+            mattis eget velit at, interdum commodo metus.
+          </p>
+
+          <div class="porto">
+            <a class="contact" href="#">contact</a>
+
+            <div class="cv">
+              <p>download CV</p>
+              <a href="#"
+                ><img src="icons/download.png" alt="cv" width="32" height="32"
+              /></a>
+            </div>
+          </div>
+
+          <div class="social">
+            <a href="#"
+              ><img src="icons/linkedin.svg" alt="Ikon" width="45" height="45"
+            /></a>
+            <a href="#"
+              ><img src="icons/instagram.svg" alt="Ikon" width="45" height="45"
+            /></a>
+            <a href="#"
+              ><img src="icons/facebook.svg" alt="Ikon" width="45" height="45"
+            /></a>
+            <a href="#"
+              ><img src="icons/twitter.svg" alt="Ikon" width="45" height="45"
+            /></a>
+          </div>
+        </section>
+        <section class="wrapper-3">
+          <div class="card">
+            <img src="images/photo.png" alt="" />
+            <h2>Rhoma Irama</h2>
+            <p>Fullstack Developer</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
