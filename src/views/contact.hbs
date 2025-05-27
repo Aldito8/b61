@@ -55,12 +55,12 @@
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../MyProject/index.html">My Project</a>
+                        <a class="nav-link" href="/portofolio">My Project</a>
                     </li>
                 </ul>
-                <button class="btn bg-black text-light pb-1 pt-1" type="submit">
+                <a class="btn bg-black text-light pb-1 pt-1" href="/contact">
                     Contact Me
-                </button>
+                </a>
             </div>
         </div>
     </nav>
@@ -107,11 +107,6 @@
                     </button>
                 </div>
             </form>
-            {{#each contacts}}
-            <a href="/portofolioDetail/{{this.id}}">
-                {{this.name}} - {{this.email}}
-            </a> <br>
-            {{/each}}
         </div>
     </div>
 </body>

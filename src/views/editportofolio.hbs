@@ -3,15 +3,31 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>edit</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
-    <h1>Portofolio: {{result.id}} - {{result.name}}</h1><a href="delete/{{result.id}}">delete</a>
+    <h1>Portofolio: {{data.id}} - {{data.nameproject}}</h1>
+    <p>{{data.startdate}}-{{data.enddate}}</p>
+    <p>{{data.description}}</p>
+    <h1>{{data.id}}</h1>
+    <form action="/editportofolio/{{data.id}}" method="POST">
+        <label for="nama project">nama project</label>
+        <input type="text" value="{{data.nameproject}}" name="nameproject">
+        <input type="date" value="{{data.startdate}}" name="startdate">
+        <input type="date" value="{{data.enddate}}" name="enddate">
+        <input type="text" value="{{data.description}}" name="description">
+        <input type="checkbox" name="nodejs" value="true" {{#if data.nodejs}}checked{{/if}} />
+        <input type="checkbox" name="reactjs" value="true" {{#if data.reactjs}}checked{{/if}} />
+        <input type="checkbox" name="nextjs" value="true" {{#if data.nextjs}}checked{{/if}} />
+        <input type="checkbox" name="typescript" value="true" {{#if data.typescript}}checked{{/if}} />
+        <button type="submit">submit</button>
+    </form>
 </body>
 
 </html> --}}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +44,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
         crossorigin="anonymous"></script>
-    <title>My Project</title>
+    <title>EDIT Project</title>
 </head>
 
 <body>
@@ -59,26 +75,26 @@
     </nav>
     <div class="justify-content-center bg-silver p-5 mb-5">
         <section class="container w-50">
-            <h2 class="d-flex justify-content-center fw-medium">ADD MY PROJECT</h2>
-            <form action="/portofolio" method="POST">
+            <h2 class="d-flex justify-content-center fw-medium">EDIT PROJECT - {{data.nameproject}}</h2>
+            <form action="/editportofolio/{{data.id}}" method="POST">
                 <div class="form-group mt-3">
                     <label for="projectName" class="fw-medium">Project Name</label>
-                    <input type="text" class="shadow form-control" id="projectName" name="nameproject" required />
+                    <input type="text" class="shadow form-control" id="projectName" name="nameproject" value="{{data.nameproject}}" required />
                 </div>
                 <div class="form row mt-3">
                     <div class="form-group col-md-6">
                         <label for="startDate" class="fw-medium">Start Date</label>
-                        <input type="date" class="shadow form-control" id="startDate" name="startdate" onchange="dateChange()"
-                            required />
+                        <input type="date" class="shadow form-control" id="startDate" name="startdate"
+                            onchange="dateChange()" value="{{data.startdate}}" required />
                     </div>
                     <div class="form-group col-md-6">
                         <label for="endDate" class="fw-medium">End Date</label>
-                        <input type="date" class="shadow form-control" id="endDate" name="enddate" disabled required />
+                        <input type="date" class="shadow form-control" id="endDate" name="enddate" value="{{data.enddate}}" required />
                     </div>
                 </div>
                 <div class="form-group mt-3">
                     <label for="description" class="fw-medium">Description</label>
-                    <textarea type="text" class="shadow form-control" id="description" name="description" rows="4" required></textarea>
+                    <textarea type="text" class="shadow form-control" id="description" name="description" rows="4" value="{{data.description}}" required>{{data.description}}</textarea>
                 </div>
 
                 <div class="form-group mt-3">
@@ -86,11 +102,11 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-check">
-                                <input class="shadow form-check-input" type="checkbox" id="nodeJs" name="nodejs" />
+                                <input class="shadow form-check-input" type="checkbox" id="nodeJs" name="nodejs" value="true" {{#if data.nodejs}}checked{{/if}} />
                                 <label class="form-check-label" for="nodeJs"> Node Js </label>
                             </div>
                             <div class="form-check">
-                                <input class="shadow form-check-input" type="checkbox" id="reactJs" name="reactjs" />
+                                <input class="shadow form-check-input" type="checkbox" id="reactJs" name="reactjs" value="true" {{#if data.reactjs}}checked{{/if}}/>
                                 <label class="form-check-label" for="reactJs">
                                     React Js
                                 </label>
@@ -98,11 +114,12 @@
                         </div>
                         <div class="col">
                             <div class="form-check">
-                                <input class="shadow form-check-input" type="checkbox" id="nextJs" name="nextjs" />
+                                <input class="shadow form-check-input" type="checkbox" id="nextJs" name="nextjs" value="true" {{#if data.nextjs}}checked{{/if}}/>
                                 <label class="form-check-label" for="nextJs"> Next Js </label>
                             </div>
                             <div class="form-check">
-                                <input class="shadow form-check-input" type="checkbox" id="typeScript" name="typescript" />
+                                <input class="shadow form-check-input" type="checkbox" id="typeScript"
+                                    name="typescript" value="true" {{#if data.typescript}}checked{{/if}}/>
                                 <label class="form-check-label" for="typeScript">
                                     TypeScript
                                 </label>
@@ -126,44 +143,6 @@
             </form>
         </section>
     </div>
-
-    <div class="justify-content-center">
-        <section class="container">
-            <h2 class="w-100 d-flex justify-content-center">MY PROJECT</h2>
-            <div class="d-flex justify-content-center">
-                <div id="content" class="row w-75 gap-4 m-4">
-                    {{#each result}}
-                    <div class="card" style="width: 19rem; padding: 0; "
-                        onclick="window.location.href='/portofolioDetail/{{this.id}}';">
-                        <img class=" card-img-top p-2" src=" " style="object-fit:contain ;" alt="project pic" />
-                        <div class="card-body">
-                            <h4 class="card-text p-0 m-0">{{this.nameproject}} - {{this.year}}</h4>
-                            <p class="card-text p-0 m-0"> duration {{this.duration}}</p>
-                            <p class="card-text text-description text-truncate">{{this.description}}</p>
-                            <div class="icon-group pb-3 d-flex gap-3">
-                                {{#if this.nodejs}}
-                                <span><i class="fa-brands fa-node-js"></i></span>
-                                {{/if}}
-                                {{#if this.reactjs}}
-                                <span><i class="fa-brands fa-react"></i></span>
-                                {{/if}}
-                                {{#if this.nextjs}}
-                                <span><i class="fa-solid fa-n"></i></span>
-                                {{/if}}
-                                {{#if this.typescript}}
-                                <span><i class="fa-solid fa-t"></i></span>
-                                {{/if}}
-                            </div>
-                            <div class="d-flex gap-2">
-                                <a href="/editportofolio/{{this.id}}" class="btn btn-dark w-50 p-0">edit</a>
-                                <a href="/delete/{{this.id}}" class="btn btn-dark w-50 p-0">delete</a>
-                            </div>
-                        </div>
-                    </div>
-                    {{/each}}
-                </div>
-                </div>
-                </section>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
